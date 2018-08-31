@@ -21,3 +21,16 @@ after_success:
    - docker push tatocar/multi-nginx
    - docker push tatocar/multi-server
    - docker push tatocar/multi-worker
+
+deploy:
+   provider: elasticbeanstalk
+   region: "us-west-2"
+   app: "multi-docker"
+   env: "MultiDocker-env"
+   bucket_name: "elasticbeanstalk-us-west-2-121061333352"
+   bucket_path: "multi-docker"
+   on:
+      branch: master
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key:
+      secure: "$AWS_SECRET_KEY"

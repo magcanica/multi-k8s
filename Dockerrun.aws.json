@@ -1,0 +1,36 @@
+{
+   "AWSEBDockerrunVersion": 2,
+   "containerDefinitions": [
+      {
+          "name": "client",
+          "image": "tatocar/multi-client",
+          "hostname": "client",
+          "essential": false
+      },
+      {
+          "name": "server",
+          "image": "tatocar/multi-server",
+          "hostname": "api",
+          "essential": false
+      },
+      {
+          "name": "worker",
+          "image": "tatocar/multi-worker",
+          "essential": false
+      },
+      {
+          "name": "nginx",
+          "image": "tatocar/multi-nginx",
+          "essential": true,
+          "portMappings": [
+             {
+                "hostPort": 80,
+                "containerPort": 80
+             }
+          ],
+          "links": [
+              "client", "server"
+          ]
+      }
+   ]
+}
