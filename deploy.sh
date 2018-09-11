@@ -8,6 +8,6 @@ docker push tatocar/multi-client:$SHA
 docker push tatocar/multi-server:$SHA
 docker push tatocar/multi-worker:$SHA
 kubectl apply -f k8s
-kubestl set image deployments/server-deployment server=tatocar/multi-server:$SHA
-kubestl set image deployments/client-deployment server=tatocar/multi-client:$SHA
-kubestl set image deployments/worker-deployment server=tatocar/multi-worker:$SHA
+kubectl set image deployments/server-deployment server=tatocar/multi-server:$SHA
+kubectl set image deployments/client-deployment server=tatocar/multi-client:$SHA
+kubectl set image deployments/worker-deployment server=tatocar/multi-worker:$SHA
